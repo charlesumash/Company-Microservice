@@ -4,6 +4,8 @@ package com.springtech.companyms.company.Impl;
 import com.springtech.companyms.company.Company;
 import com.springtech.companyms.company.CompanyRepository;
 import com.springtech.companyms.company.CompanyService;
+import com.springtech.companyms.company.dto.ReviewMessage;
+import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +55,12 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company getCompanyById(Long companyId) {
         return companyRepository.findById(companyId).orElse(null);
+    }
+
+    @Override
+    public void updateCompanyRating(ReviewMessage reviewMessage) {
+        Company company = companyRepository.findById(reviewMessage.getCompanyId()).orElse(null);
+        company.setRating(reviewMessage.getCompanyRating());
+        companyRepository.save(company);
     }
 }

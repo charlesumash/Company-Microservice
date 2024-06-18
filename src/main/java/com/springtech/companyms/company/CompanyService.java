@@ -1,5 +1,7 @@
 package com.springtech.companyms.company;
 
+import com.springtech.companyms.company.dto.ReviewMessage;
+
 import java.util.List;
 
 public interface CompanyService {
@@ -13,4 +15,5 @@ public interface CompanyService {
 
     public Company getCompanyById(Long companyId);
 
+    public void updateCompanyRating(ReviewMessage reviewMessage);
 }
