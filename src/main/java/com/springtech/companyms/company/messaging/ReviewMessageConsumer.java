@@ -13,7 +13,6 @@ public class ReviewMessageConsumer {
 
     @RabbitListener(queues = "companyRatingQueue")
     public void consumeMessage(ReviewMessage reviewMessage){
-
         companyService.updateCompanyRating(reviewMessage);
     }
 }
